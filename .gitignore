@@ -43,3 +43,4 @@ lerna-debug.log*
 # Static files
 public/uploads
 src/uploads
+keys/
