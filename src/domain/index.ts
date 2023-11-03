@@ -1,6 +1,7 @@
 export * from './datasources/todo.datasource';
 export * from './dtos';
 export * from './entities/todo.entity';
+export * from './exceptions/custom.exception';
 export * from './repositories/todo.datasource';
 
 

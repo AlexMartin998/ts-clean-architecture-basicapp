@@ -1,4 +1,5 @@
 import express, { Router } from 'express';
+import compression from 'compression';
 import path from 'path';
 
 
@@ -33,6 +34,7 @@ export class Server {
     ///* Middlewares
     this.app.use( express.json() ); // receive JSON in req.body
     this.app.use( express.urlencoded({ extended: true }) ); // x-www-form-urlencoded
+    this.app.use( compression() )
 
 
 
