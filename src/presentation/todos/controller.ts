@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 
+
+// temp data
 const todos = [
   { id: 1, text: 'Buy milk', completedAt: new Date() },
   { id: 2, text: 'Buy bread', completedAt: null },
@@ -76,7 +78,7 @@ export class TodosController {
       return res.status(404).json({ error: `Todo with id ${id} not found` });
 
     todos.splice(todos.indexOf(todo), 1);
-    res.json(todo);
+    res.json(todo); // 204 without body
   };
 
 }
