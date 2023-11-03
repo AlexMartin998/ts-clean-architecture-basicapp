@@ -1,4 +1,5 @@
 import { TodoDatasource, TodoEntity, TodoRepository } from '@/domain';
+import { CreateTodoDto, UpdateTodoDto } from '@/domain/dtos';
 
 
 export class TodoRepositoryImpl implements TodoRepository {
@@ -15,12 +16,12 @@ export class TodoRepositoryImpl implements TodoRepository {
     return this.datasource.findOne(id);
   }
 
-  create(todo: TodoEntity): Promise<TodoEntity> {
-    return this.datasource.create(todo);
+  create(createTodoDto: CreateTodoDto): Promise<TodoEntity> {
+    return this.datasource.create(createTodoDto);
   }
 
-  update(todo: TodoEntity): Promise<TodoEntity> {
-    return this.datasource.update(todo);
+  update(updateTodoDto: UpdateTodoDto): Promise<TodoEntity> {
+    return this.datasource.update(updateTodoDto);
   }
 
   delete(id: number): Promise<boolean> {

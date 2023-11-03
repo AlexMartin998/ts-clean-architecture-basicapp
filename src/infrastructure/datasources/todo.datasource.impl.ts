@@ -1,9 +1,9 @@
 import { prisma } from '@/data/postgres';
-import { TodoDatasource, TodoEntity } from '@/domain';
+import { CreateTodoDto, TodoDatasource, TodoEntity, UpdateTodoDto } from '@/domain';
 
 
 export class TodoDatasourceImpl implements TodoDatasource {
-
+ 
   async findAll(): Promise<TodoEntity[]> {
     const todos = await prisma.todo.findMany();
 
@@ -14,23 +14,25 @@ export class TodoDatasourceImpl implements TodoDatasource {
     const todo = await prisma.todo.findFirst({
       where: { id },
     });
-    if (!todo) throw new Error(`Todo with id ${id} not found`);
+    if (!todo) throw `Todo with id ${id} not found`;
 
     return TodoEntity.fromObject(todo);
   }
 
-  async create(todo: TodoEntity): Promise<TodoEntity> {
-    const newTodo = await prisma.todo.create({ data: todo });
+  async create(createTodoDto: CreateTodoDto): Promise<TodoEntity> {
+    const todo = await prisma.todo.create({
+      data: createTodoDto!
+    });
 
-    return TodoEntity.fromObject(newTodo);
+    return TodoEntity.fromObject( todo );
   }
 
-  async update(todo: TodoEntity): Promise<TodoEntity> {
-    await this.findOne(todo.id);
+  async update(updateTodoDto: UpdateTodoDto): Promise<TodoEntity> {
+    await this.findOne( updateTodoDto.id );
 
     const updatedTodo = await prisma.todo.update({
-      where: { id: todo.id },
-      data: todo,
+      where: { id: updateTodoDto.id },
+      data: updateTodoDto!.values
     });
 
     return TodoEntity.fromObject(updatedTodo);

@@ -1,3 +1,4 @@
+import { CreateTodoDto, UpdateTodoDto } from '../dtos';
 import { TodoEntity } from '../entities/todo.entity';
 
 
@@ -7,9 +8,9 @@ export interface TodoRepository {
 
   findOne(id: number): Promise<TodoEntity>;
 
-  create(todo: TodoEntity): Promise<TodoEntity>;
-
-  update(todo: TodoEntity): Promise<TodoEntity>;
+  create( createTodoDto: CreateTodoDto ): Promise<TodoEntity>;
+  
+  update( updateTodoDto: UpdateTodoDto ): Promise<TodoEntity>;
 
   delete(id: number): Promise<boolean>;
 
