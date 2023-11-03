@@ -1,0 +1,21 @@
+import { UpdateTodoDto } from '../../dtos';
+import { TodoEntity } from '../../entities/todo.entity';
+import { TodoRepository } from '../../repositories/todo.datasource';
+
+
+export interface UpdateTodoUseCase {
+  execute( dto: UpdateTodoDto ): Promise<TodoEntity>
+}
+
+
+export class UpdateTodo implements UpdateTodoUseCase {
+  
+  ///* DI
+  constructor(private readonly repository: TodoRepository) {}
+  
+  execute( dto: UpdateTodoDto ): Promise<TodoEntity> {
+    return this.repository.update(dto);
+  }
+
+}
+
