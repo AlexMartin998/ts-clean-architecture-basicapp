@@ -1,12 +1,24 @@
-import { TodoRoutes } from '../src/presentation/todos/routes';
-import { TodoDatasourceImpl } from '../src/infrastructure/datasources/todo.datasource.impl';
+import { envs } from '../src/config/envs';
+import { Server } from '../src/presentation/server';
+
+// // vamos a mocker todo el Server | tb util para mockear librerias externas (react)
+jest.mock('../src/presentation/server.ts');
 
 
-describe('first', () => {
-  it('it should be true', () => {
 
-    TodoRoutes.routes;
-    TodoDatasourceImpl
-    expect(true).toBeTruthy();
+describe('[App]: Test suit', () => {
+
+  it('it should work', async () => {
+    await import('../src/app');
+
+    expect(Server).toHaveReturnedTimes(1);
+    expect(Server).toHaveBeenCalledWith({
+      port: envs.PORT,
+      public_path: 'public',
+      router: expect.any(Function)
+    });
+
+    expect(Server.prototype.start).toHaveBeenCalledWith();
   });
+
 });
