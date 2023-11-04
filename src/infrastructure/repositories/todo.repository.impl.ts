@@ -1,5 +1,7 @@
-import { TodoDatasource, TodoEntity, TodoRepository } from '@/domain';
+import { TodoDatasource } from '@/domain/datasources';
 import { CreateTodoDto, UpdateTodoDto } from '@/domain/dtos';
+import { TodoEntity } from '@/domain/entities';
+import { TodoRepository } from '@/domain/repositories';
 
 
 export class TodoRepositoryImpl implements TodoRepository {

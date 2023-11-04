@@ -1,6 +1,10 @@
 import { prisma } from '@/data/postgres';
+import { TodoDatasource } from '@/domain/datasources';
+import { CreateTodoDto, UpdateTodoDto } from '@/domain/dtos';
+import { TodoEntity } from '@/domain/entities';
+import { CustomException } from '@/domain/exceptions';
 
-import { CreateTodoDto, CustomException, TodoDatasource, TodoEntity, UpdateTodoDto } from '@/domain';
+
 
 
 export class TodoDatasourceImpl implements TodoDatasource {

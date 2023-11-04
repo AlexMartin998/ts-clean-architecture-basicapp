@@ -1,16 +1,9 @@
 import { Request, Response } from 'express';
 
-import {
-  CreateTodo,
-  CreateTodoDto,
-  CustomException,
-  DeleteTodo,
-  GetTodo,
-  GetTodos,
-  TodoRepository,
-  UpdateTodo,
-  UpdateTodoDto,
-} from '@/domain';
+import { CreateTodoDto, UpdateTodoDto } from '@/domain/dtos';
+import { CustomException } from '@/domain/exceptions';
+import { TodoRepository } from '@/domain/repositories';
+import { CreateTodo, DeleteTodo, GetTodo, GetTodos, UpdateTodo } from '@/domain/use-cases';
 
 
 
